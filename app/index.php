@@ -1,14 +1,11 @@
 <?php
-require_once realpath("./vendor/autoload.php");
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$DB_USER = getenv('POSTGRES_USER');
+$DB_PASSW = getenv('POSTGRES_PASSWORD');
+$DB_NAME = getenv('POSTGRES_DB');
+$PORT = getenv('POSTGRES_PORT');
+$HOST = getenv('POSTGRES_HOST');
 
-$DB_USER = $_ENV['POSTGRES_USER'];
-$DB_PASSW = $_ENV['POSTGRES_PASSWORD'];
-$DB_NAME = $_ENV['POSTGRES_DB'];
-
-$dsn = "pgsql:host=db;port=5432;dbname={$DB_NAME};";
+$dsn = "pgsql:host={$HOST};port={$PORT};dbname={$DB_NAME};";
 $user = $DB_USER;
 $password = $DB_PASSW;
 
